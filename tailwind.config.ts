@@ -77,6 +77,11 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      fontFamily: {
+        inter: "var(--font-inter)",
+        poppins: "var(--font-poppins)",
+        oswald: "var(--font-oswald)",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
