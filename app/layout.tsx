@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Inter, Poppins, Oswald } from "next/font/google";
+// eslint-disable-next-line camelcase
+import { Inter, Poppins, EB_Garamond } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
 
-const oswald = Oswald({
+const garamond = EB_Garamond({
   subsets: ["latin"],
-  variable: "--font-oswald",
-  weight: ["200", "300", "400", "500", "600", "700"],
+  variable: "--font-garamond",
+  weight: ["600", "700", "800"],
 });
 
 const inter = Inter({ subsets: ["latin"] });
@@ -31,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={cn(oswald.className, inter.className, poppins.className)}
+        className={cn(garamond.variable, inter.className, poppins.variable)}
       >
         <Toaster richColors position="top-center" />
         {children}

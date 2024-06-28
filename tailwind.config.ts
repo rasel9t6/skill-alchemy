@@ -78,9 +78,9 @@ const config = {
         },
       },
       fontFamily: {
-        inter: "var(--font-inter)",
-        poppins: "var(--font-poppins)",
-        oswald: "var(--font-oswald)",
+        garamond: ["var(--font-garamond)", "sans-serif"],
+        inter: ["var(--font-inter)", "sans-serif"],
+        poppins: ["var(--poppins)", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

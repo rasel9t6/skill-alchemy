@@ -4,17 +4,18 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import { X, Menu } from "lucide-react";
-import { Button, buttonVariants } from "./ui/button";
+import { Button, buttonVariants } from "../ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+} from "../ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
-import Logo from "./Logo";
+import Logo from "../Logo";
 import MobileNav from "./MobileNav";
+
 interface NavItem {
   items: { title: string; href: string; disabled?: boolean }[];
   children?: React.ReactNode;

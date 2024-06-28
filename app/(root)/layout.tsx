@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer";
-import MainNav from "@/components/MainNav";
+import MainNav from "@/components/navbar/MainNav";
 
 import React from "react";
 const navLinks = [
