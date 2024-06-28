@@ -7,52 +7,10 @@ import { cn } from "@/lib/utils";
 import { ArrowRightIcon, BookOpen, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-const categories = [
-  {
-    id: 1,
-    title: "Design",
-    thumbnail: "/assets/images/categories/design.jpg",
-  },
-
-  {
-    id: 3,
-    title: "Development",
-    thumbnail: "/assets/images/categories/development.jpg",
-  },
-  {
-    id: 4,
-    title: "Marketing",
-    thumbnail: "/assets/images/categories/marketing.jpg",
-  },
-  {
-    id: 5,
-    title: "IT & Software",
-    thumbnail: "/assets/images/categories/it_software.jpg",
-  },
-  {
-    id: 6,
-    title: "Personal Development",
-    thumbnail: "/assets/images/categories/personal_development.jpg",
-  },
-  {
-    id: 7,
-    title: "Business",
-    thumbnail: "/assets/images/categories/business.jpg",
-  },
-  {
-    id: 8,
-    title: "Photography",
-    thumbnail: "/assets/images/categories/photography.jpg",
-  },
-  {
-    id: 9,
-    title: "Music",
-    thumbnail: "/assets/images/categories/music.jpg",
-  },
-];
 
 export default async function HomePage() {
   const courses = await getCourses("/courses");
+  const categories = await getCourses("/categories");
   const progressBarValue = 100;
   return (
     <>
@@ -111,23 +69,23 @@ export default async function HomePage() {
           <SectionTitle>Categories</SectionTitle>
 
           <Link
-            href={""}
+            href="/categories"
             className="flex items-center gap-1 text-sm font-medium hover:opacity-80"
           >
             Browse All <ArrowRightIcon className="size-4" />
           </Link>
         </div>
         <div className="mx-auto grid grid-cols-2 justify-center gap-4 md:grid-cols-3 2xl:grid-cols-4">
-          {categories.map((category) => {
+          {categories.map((category: any) => {
             return (
               <Link
-                href=""
+                href={`/categories/${category.id}`}
                 key={category.id}
                 className="relative overflow-hidden rounded-lg border bg-background p-2 transition-all duration-500 ease-in-out hover:scale-105"
               >
                 <div className="flex flex-col items-center justify-between gap-4 rounded-md p-6">
                   <Image
-                    src={category.thumbnail}
+                    src={`/assets/images/categories/${category.thumbnail}`}
                     alt={category.title}
                     width={100}
                     height={100}
@@ -144,7 +102,7 @@ export default async function HomePage() {
         <div className="flex items-center justify-between">
           <SectionTitle>Courses</SectionTitle>
           <Link
-            href={""}
+            href="/courses"
             className="flex items-center gap-1 text-sm font-medium hover:opacity-80"
           >
             Browse All <ArrowRightIcon className="size-4" />
@@ -152,43 +110,52 @@ export default async function HomePage() {
         </div>
         <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
           {courses.map(
-            (category: { id: number; thumbnail: string; title: string }) => {
+            (course: {
+              id: number;
+              thumbnail: string;
+              title: string;
+              category: { title: string };
+              modules: [string];
+              price: number;
+            }) => {
               return (
-                <Link key={category.id} href={`/courses/${category.id}`}>
+                <Link key={course.id} href={`/courses/${course.id}`}>
                   <div className="group h-full overflow-hidden rounded-lg border p-3 transition hover:shadow-sm">
                     <div className="relative aspect-video w-full overflow-hidden rounded-md">
                       <Image
                         src="/assets/images/courses/course_1.png"
-                        alt={"course"}
+                        alt={course.title}
                         className="object-cover"
                         fill
                       />
                     </div>
                     <div className="flex flex-col pt-2">
                       <div className="line-clamp-2 text-lg font-medium group-hover:text-mint md:text-base">
-                        Reactive Accelerator
+                        {course.title}
                       </div>
                       <p className="text-xs text-muted-foreground">
-                        Development
+                        {course.category.title}
                       </p>
                       <div className="my-3 flex items-center gap-x-2 text-sm md:text-xs">
                         <div className="flex items-center gap-x-1 text-slate-500">
                           <div>
                             <BookOpen className="w-4" />
                           </div>
-                          <span>4 Chapters</span>
+                          <span>{course.modules.length} Chapters</span>
                         </div>
                       </div>
 
                       <CourseProgress
                         size="sm"
                         value={80}
-                        variant={progressBarValue === 100 ? "success" : "default"}
+                        variant={
+                          progressBarValue === 100 ? "success" : "default"
+                        }
                       />
 
                       <div className="mt-4 flex items-center justify-between">
                         <p className="text-md font-medium text-charcoal-400 md:text-sm">
-                          {formatPrice(49)}
+                          {formatPrice(course.price)}
                         </p>
 
                         <Button
