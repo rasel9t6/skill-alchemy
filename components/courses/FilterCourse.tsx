@@ -11,6 +11,12 @@ import { Checkbox } from "@/components/ui/checkbox";
 
 import { useState } from "react";
 
+type FilterType = {
+  categories: string[];
+  price: string[];
+  sort: string;
+};
+
 const PRICE_OPTIONS = [
   { label: "Free", value: "free" },
   { label: "Paid", value: "paid" },
@@ -22,7 +28,6 @@ const CATEGORY_OPTIONS = [
     label: "Design",
     value: "design",
   },
-
   {
     id: 3,
     label: "Development",
@@ -59,15 +64,22 @@ const CATEGORY_OPTIONS = [
     value: "music",
   },
 ];
+
 export default function FilterCourse() {
-  const [filter, setFilter] = useState({
+  const [filter, setFilter] = useState<FilterType>({
     categories: ["development"],
     price: ["free"],
     sort: "",
   });
 
-  //   apply checkbox filter
-  const applyArrayFilter = ({ type, value }) => {
+  // Apply checkbox filter
+  const applyArrayFilter = ({
+    type,
+    value,
+  }: {
+    type: keyof FilterType;
+    value: string;
+  }) => {
     const isFilterApplied = filter[type].includes(value);
 
     if (isFilterApplied) {
@@ -82,6 +94,7 @@ export default function FilterCourse() {
       }));
     }
   };
+
   return (
     <div className="hidden lg:block">
       <Accordion defaultValue={["categories"]} type="multiple">

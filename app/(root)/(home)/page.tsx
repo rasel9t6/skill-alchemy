@@ -1,5 +1,6 @@
 import CourseProgress from "@/components/CourseProgress";
 import SectionTitle from "@/components/SectionTitle";
+import CourseCard from "@/components/courses/CourseCard";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { getCourses } from "@/lib/actions/courses";
 import { formatPrice } from "@/lib/formatPrice";
@@ -7,7 +8,14 @@ import { cn } from "@/lib/utils";
 import { ArrowRightIcon, BookOpen, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
+interface CoursePropsTypes {
+  id: number;
+  thumbnail: string;
+  title: string;
+  category: { title: string };
+  modules: [string];
+  price: number;
+}
 export default async function HomePage() {
   const courses = await getCourses("/courses");
   const categories = await getCourses("/categories");
@@ -109,69 +117,9 @@ export default async function HomePage() {
           </Link>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
-          {courses.map(
-            (course: {
-              id: number;
-              thumbnail: string;
-              title: string;
-              category: { title: string };
-              modules: [string];
-              price: number;
-            }) => {
-              return (
-                <Link key={course.id} href={`/courses/${course.id}`}>
-                  <div className="group h-full overflow-hidden rounded-lg border p-3 transition hover:shadow-sm">
-                    <div className="relative aspect-video w-full overflow-hidden rounded-md">
-                      <Image
-                        src="/assets/images/courses/course_1.png"
-                        alt={course.title}
-                        className="object-cover"
-                        fill
-                      />
-                    </div>
-                    <div className="flex flex-col pt-2">
-                      <div className="line-clamp-2 text-lg font-medium group-hover:text-mint md:text-base">
-                        {course.title}
-                      </div>
-                      <p className="text-xs text-muted-foreground">
-                        {course.category.title}
-                      </p>
-                      <div className="my-3 flex items-center gap-x-2 text-sm md:text-xs">
-                        <div className="flex items-center gap-x-1 text-slate-500">
-                          <div>
-                            <BookOpen className="w-4" />
-                          </div>
-                          <span>{course.modules.length} Chapters</span>
-                        </div>
-                      </div>
-
-                      <CourseProgress
-                        size="sm"
-                        value={80}
-                        variant={
-                          progressBarValue === 100 ? "success" : "default"
-                        }
-                      />
-
-                      <div className="mt-4 flex items-center justify-between">
-                        <p className="text-md font-medium text-charcoal-400 md:text-sm">
-                          {formatPrice(course.price)}
-                        </p>
-
-                        <Button
-                          variant="ghost"
-                          className="h-7 gap-1 text-xs text-charcoal hover:bg-mint"
-                        >
-                          Enroll
-                          <ArrowRight className="w-3" />
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              );
-            },
-          )}
+          {courses.map((course: any) => {
+            return <CourseCard key={course.id} course={course} />;
+          })}
         </div>
       </section>
     </>
