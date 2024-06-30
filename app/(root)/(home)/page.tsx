@@ -8,18 +8,10 @@ import { cn } from "@/lib/utils";
 import { ArrowRightIcon, BookOpen, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-interface CoursePropsTypes {
-  id: number;
-  thumbnail: string;
-  title: string;
-  category: { title: string };
-  modules: [string];
-  price: number;
-}
+
 export default async function HomePage() {
   const courses = await getCourses("/courses");
   const categories = await getCourses("/categories");
-  const progressBarValue = 100;
   return (
     <>
       <section className="grainy space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
