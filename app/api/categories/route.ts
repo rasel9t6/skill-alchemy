@@ -1,4 +1,4 @@
-import { replaceMongoIdInArray } from "@/lib/converData";
+import { replaceMongoIdInArray } from "@/lib/convertData";
 import Category from "@/lib/models/Category";
 import { connectToDB } from "@/lib/mongoDB";
 import { NextResponse } from "next/server";

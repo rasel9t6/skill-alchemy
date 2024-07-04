@@ -2,10 +2,11 @@ import CourseDetails from "@/components/courses/courseDetails/CourseDetails";
 import CourseDetailsIntro from "@/components/courses/courseDetails/CourseDetailsIntro";
 import RelatedCourses from "@/components/courses/courseDetails/RelatedCourses";
 import Testimonials from "@/components/courses/courseDetails/Testimonials";
+import { getCourseDetails } from "@/lib/actions/courses";
 import { replaceMongoIdInArray } from "@/lib/convertData";
 
-export default async function CourseDetailsPage({ params: { id } }) {
-  const course = await getCourseDetails(id);
+export default async function CourseDetailsPage({ params: { id}}) {
+  const course = await getCourseDetails(`/courses/${id}`);
   return (
     <>
       <CourseDetailsIntro

@@ -5,14 +5,7 @@ import FilterCourse from "../../../components/courses/FilterCourse";
 import FilterCourseMobile from "../../../components/courses/FilterCourseMobile";
 import SearchCourse from "../../../components/courses/SearchCourse";
 import SortCourse from "../../../components/courses/SortCourse";
-interface CoursePropsTypes {
-  id: number;
-  thumbnail: string;
-  title: string;
-  category: { title: string };
-  modules: [string];
-  price: number;
-}
+
 export default async function CoursesPage() {
   const courses = await getCourses("/courses");
   return (
