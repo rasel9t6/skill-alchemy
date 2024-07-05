@@ -8,6 +8,7 @@ import { replaceMongoIdInArray } from "@/lib/convertData";
 
 export default async function CourseDetailsPage({ params }: any) {
   const course = await getCourseDetails(params.id);
+  console.log(course)
   return (
     <>
       <CourseDetailsIntro

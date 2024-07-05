@@ -5,6 +5,10 @@ const courseSchema = new Schema({
     required: true,
     type: String,
   },
+  subtitle: {
+    required: true,
+    type: String,
+  },
   description: {
     required: true,
     type: String,
@@ -44,14 +48,20 @@ const courseSchema = new Schema({
       ref: "Testimonial",
     },
   ],
-  // createdAt: {
-  //   type: Date,
-  //   default: Date.now,
-  // },
-  // updatedAt: {
-  //   type: Date,
-  //   default: Date.now,
-  // },
+  learning: {
+    required: true,
+    type: [String],
+  },
+  createdOn: {
+    required: true,
+    type: Date,
+    default: Date.now,
+  },
+  modifiedOn: {
+    required: true,
+    type: Date,
+    default: Date.now,
+  },
 });
 
 export const Course =

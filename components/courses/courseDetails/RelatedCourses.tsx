@@ -1,4 +1,5 @@
 import SectionTitle from "@/components/SectionTitle";
+import { Button } from "@/components/ui/button";
 import {
   Carousel,
   CarouselPrevious,
@@ -7,9 +8,10 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { formatPrice } from "@/lib/formatPrice";
-import { Link, BookOpen, ArrowRight } from "lucide-react";
+import { BookOpen, ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { Button } from "react-day-picker";
+import Link from "next/link";
+
 const courses = [
   {
     id: 1,

@@ -1,8 +1,11 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { formatMyDate } from "@/lib/formatDate";
 import Image from "next/image";
+import CourseOverview from "./CourseOverview";
+import CourseInstructor from "./CourseInstructor";
+import CourseCurriculum from "./CourseCurriculum";
 
-export default function CourseDetails({ course }) {
+export default function CourseDetails({ course }: any) {
   const lastModifiedDate = formatMyDate(course.modifiedOn);
 
   return (
@@ -40,7 +43,7 @@ export default function CourseDetails({ course }) {
           <Tabs defaultValue="overview" className="w-full">
             <TabsList className="my-6 grid w-full max-w-screen-md grid-cols-3">
               <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="curriculum">Carriculum</TabsTrigger>
+              <TabsTrigger value="curriculum">Curriculum</TabsTrigger>
               <TabsTrigger value="instructor">Instructor</TabsTrigger>
               {/* <TabsTrigger value="reviews">Reviews</TabsTrigger> */}
             </TabsList>
@@ -49,7 +52,7 @@ export default function CourseDetails({ course }) {
               <CourseOverview course={course} />
             </TabsContent>
             <TabsContent value="curriculum">
-              <CourseCurriculam course={course} />
+              <CourseCurriculum course={course} />
             </TabsContent>
             <TabsContent value="instructor">
               <CourseInstructor course={course} />
