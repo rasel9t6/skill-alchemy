@@ -13,10 +13,8 @@ export const replaceMongoIdInArray = (
   return mappedArray;
 };
 
-export const replaceMongoIdInObject = (obj: {
-  _id: any;
-  [key: string]: any;
-}): { id: string; [key: string]: any } => {
+export const replaceMongoIdInObject = (obj: { _id: any; [key: string]: any }): { id: string; [key: string]: any } => {
   const { _id, ...updatedObj } = { ...obj, id: obj._id.toString() };
   return updatedObj;
 };
+

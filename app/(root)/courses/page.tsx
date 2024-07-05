@@ -1,4 +1,4 @@
-import { getCourses } from "@/lib/actions/courses";
+import { getCourses } from "@/lib/actions/course.action";
 import ActiveFilters from "../../../components/courses/ActiveFilters";
 import CourseCard from "../../../components/courses/CourseCard";
 import FilterCourse from "../../../components/courses/FilterCourse";
@@ -7,7 +7,7 @@ import SearchCourse from "../../../components/courses/SearchCourse";
 import SortCourse from "../../../components/courses/SortCourse";
 
 export default async function CoursesPage() {
-  const courses = await getCourses("/courses");
+  const courses = await getCourses();
   return (
     <section
       id="courses"

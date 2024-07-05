@@ -2,16 +2,22 @@ import CourseProgress from "@/components/CourseProgress";
 import SectionTitle from "@/components/SectionTitle";
 import CourseCard from "@/components/courses/CourseCard";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { getCourses } from "@/lib/actions/courses";
+import { getCourses } from "@/lib/actions/course.action";
+import { getCategories } from "@/lib/actions/category.action";
+
 import { formatPrice } from "@/lib/formatPrice";
 import { cn } from "@/lib/utils";
 import { ArrowRightIcon, BookOpen, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { connectToDB } from "@/lib/mongoDB";
 
 export default async function HomePage() {
-  const courses = await getCourses("/courses");
-  const categories = await getCourses("/categories");
+  await connectToDB();
+  const courses = await getCourses();
+  console.log(courses);
+  const categories = await getCategories();
+
   return (
     <>
       <section className="grainy space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">

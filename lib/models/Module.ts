@@ -28,4 +28,4 @@ const moduleSchema = new Schema({
 });
 
 export const Module =
-  mongoose.models.Module ?? mongoose.model("Module", moduleSchema);
+  mongoose.models.Module || mongoose.model("Module", moduleSchema);
