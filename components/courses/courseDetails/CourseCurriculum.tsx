@@ -2,7 +2,7 @@ import { Accordion } from "@/components/ui/accordion";
 import { BookCheck, Clock10 } from "lucide-react";
 import CourseModule from "./courseModule/CourseModule";
 
-export default function CourseCurriculum({ course }) {
+export default function CourseCurriculum({ course }:any) {
   const totalDuration = course?.modules.reduce(function (acc, obj) {
     return acc + obj.duration;
   }, 0);
