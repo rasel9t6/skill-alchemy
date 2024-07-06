@@ -1,8 +1,9 @@
+import { getLesson } from "@/lib/actions/lesson.action";
 import { cn } from "@/lib/utils";
 import { Tv } from "lucide-react";
 
 export default async function CourseLesson({ lessonId }: any) {
-  const lesson = await getLesson(`/courses/${lessonId}`);
+  const lesson = await getLesson(lessonId);
   return (
     <button
       type="button"

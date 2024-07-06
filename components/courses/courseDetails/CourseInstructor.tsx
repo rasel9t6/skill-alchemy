@@ -1,3 +1,4 @@
+import { getCourseDetailsByInstructor } from "@/lib/actions/course.action";
 import { Presentation, UsersRound, MessageSquare, Star } from "lucide-react";
 import Image from "next/image";
 

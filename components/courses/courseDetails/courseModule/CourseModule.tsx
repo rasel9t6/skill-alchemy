@@ -4,8 +4,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Video } from "lucide-react";
+import CourseLesson from "./CourseLesson";
 
-export default function CourseModule({ module }) {
+export default function CourseModule({ module }:any) {
+  console.log(module);
   return (
     <AccordionItem className="border-none" value="item-1">
       <AccordionTrigger>{module?.title}</AccordionTrigger>
@@ -21,8 +23,8 @@ export default function CourseModule({ module }) {
 
         <div className="space-y-3">
           {module?.lessonIds &&
-            module?.lessonIds.map((lessonId) => (
-              <CourseLessonList lessonId={lessonId} />
+            module?.lessonIds.map((lessonId: any) => (
+              <CourseLesson lessonId={lessonId} key={lessonId} />
             ))}
         </div>
       </AccordionContent>

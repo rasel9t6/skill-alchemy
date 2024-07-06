@@ -11,7 +11,7 @@ export default function CourseDetails({ course }: any) {
   return (
     <section className="py-8 md:py-12 lg:py-24">
       <div className="container">
-        <span className="bg-success inline-block rounded-full p-0.5 text-xs font-medium text-white">
+        <span className="inline-block rounded-full bg-mint px-2 py-0.5 text-xs font-medium text-white">
           {course?.category?.title}
         </span>
         <h3 className="mt-3 text-2xl font-bold md:text-3xl lg:text-4xl 2xl:text-5xl">
